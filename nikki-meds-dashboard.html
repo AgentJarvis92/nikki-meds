@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Meddies</title>
+    <link rel="icon" type="image/jpeg" href="med-icon.jpeg">
+    <link rel="apple-touch-icon" href="med-icon.jpeg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #b8e6f0 0%, #d4f1f9 100%);
+            min-height: 100vh;
+            color: #2d5016;
+        }
+        
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 2px solid #9dd17d;
+            padding: 16px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+        
+        .header h1 {
+            font-size: 22px;
+            font-weight: 600;
+            color: #2d5016;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .app-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+        }
+        
+        .header p {
+            font-size: 14px;
+            color: #6b8e5a;
+            margin-top: 2px;
+        }
+        
+        .container {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 12px rgba(45, 80, 22, 0.1);
+            border: 2px solid rgba(157, 209, 125, 0.3);
+        }
+        
+        .card-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #2d5016;
+        }
+        
+        .quick-log {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        
+        .quick-log button {
+            flex: 1;
+            padding: 14px;
+            border: 2px solid #9dd17d;
+            border-radius: 12px;
+            background: white;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+            color: #2d5016;
+        }
+        
+        .quick-log button:active {
+            background: #e8f5e0;
+            transform: scale(0.98);
+        }
+        
+        .manual-log {
+            padding-top: 16px;
+            border-top: 1px solid #f5f5f7;
+        }
+        
+        .form-group {
+            margin-bottom: 12px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            color: #6b8e5a;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #9dd17d;
+            border-radius: 10px;
+            font-size: 15px;
+            background: white;
+            color: #2d5016;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .btn-primary {
+            background: #9dd17d;
+            color: #2d5016;
+            font-weight: 600;
+        }
+        
+        .btn-primary:active {
+            background: #7db85d;
+            transform: scale(0.98);
+        }
+        
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+        }
+        
+        .day-header {
+            text-align: center;
+            font-size: 12px;
+            font-weight: 600;
+            color: #6b8e5a;
+            padding: 8px 0;
+        }
+        
+        .day {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 10px 6px;
+            min-height: 80px;
+            font-size: 13px;
+            border: 1px solid rgba(157, 209, 125, 0.3);
+        }
+        
+        .day.today {
+            background: rgba(255, 192, 203, 0.2);
+            border: 2px solid #ffb6c1;
+            box-shadow: 0 0 8px rgba(255, 182, 193, 0.4);
+        }
+        
+        .day.empty {
+            background: transparent;
+            border: none;
+        }
+        
+        .day-number {
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #2d5016;
+        }
+        
+        .dose-indicator {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin: 3px 0;
+            font-size: 11px;
+        }
+        
+        .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+        }
+        
+        .dot.taken {
+            background: #34c759;
+        }
+        
+        .dot.missed {
+            background: #ff3b30;
+        }
+        
+        .dot.pending {
+            background: #c7c7cc;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        
+        .stat {
+            text-align: center;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 12px;
+            border: 2px solid rgba(157, 209, 125, 0.3);
+        }
+        
+        .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        
+        .stat-value.good {
+            color: #7db85d;
+        }
+        
+        .stat-value.bad {
+            color: #ff9999;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: #6b8e5a;
+        }
+        
+        .month-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        
+        .month-nav button {
+            padding: 8px 12px;
+            border: 2px solid #9dd17d;
+            border-radius: 10px;
+            background: white;
+            cursor: pointer;
+            font-size: 14px;
+            color: #2d5016;
+            font-weight: 500;
+        }
+        
+        .month-label {
+            font-size: 17px;
+            font-weight: 600;
+            color: #2d5016;
+        }
+        
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #9dd17d;
+            color: #2d5016;
+            padding: 14px 20px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(45, 80, 22, 0.3);
+        }
+        
+        .toast.show {
+            opacity: 0.95;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 12px;
+            }
+            
+            .calendar {
+                gap: 4px;
+            }
+            
+            .day {
+                min-height: 70px;
+                padding: 8px 2px;
+                font-size: 11px;
+            }
+            
+            .day-header {
+                font-size: 11px;
+                padding: 6px 0;
+            }
+            
+            .dose-indicator {
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>
+            <img src="med-icon.jpeg" alt="Med Icon" class="app-icon">
+            My Meddies
+        </h1>
+        <p>Nadalol • 9:30 AM & 9:30 PM</p>
+    </div>
+    
+    <div class="container">
+        <div style="display: flex; gap: 8px; margin-bottom: 16px;">
+            <a href="nikki-meds-dashboard.html" style="flex: 1; padding: 12px; text-align: center; background: rgba(255, 255, 255, 0.8); border: 2px solid #9dd17d; border-radius: 12px; color: #2d5016; text-decoration: none; font-weight: 500;">📊 Tracker</a>
+            <a href="nikki-meds-safety.html" style="flex: 1; padding: 12px; text-align: center; background: rgba(255, 255, 255, 0.8); border: 2px solid #9dd17d; border-radius: 12px; color: #2d5016; text-decoration: none; font-weight: 500;">💊 Drugs</a>
+        </div>
+        
+        <div class="card">
+            <div class="card-title">Quick Log</div>
+            <div class="quick-log">
+                <button onclick="quickLog('am')">Log Morning Dose</button>
+                <button onclick="quickLog('pm')">Log Evening Dose</button>
+            </div>
+            
+            <div class="manual-log">
+                <div class="form-group">
+                    <label>Date</label>
+                    <input type="date" id="manual-date">
+                </div>
+                <div class="form-group">
+                    <label>Time</label>
+                    <select id="manual-time">
+                        <option value="09:30">Morning (9:30 AM)</option>
+                        <option value="21:30">Evening (9:30 PM)</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary" onclick="manualLog()">Add Dose</button>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-title">This Month</div>
+            <div class="stats" id="stats"></div>
+            
+            <div class="month-nav">
+                <button onclick="changeMonth(-1)">←</button>
+                <div class="month-label" id="month-label"></div>
+                <button onclick="changeMonth(1)">→</button>
+            </div>
+            
+            <div class="calendar" id="calendar"></div>
+        </div>
+    </div>
+    
+    <div class="toast" id="toast"></div>
+
+    <script>
+        let currentMonth = new Date().getMonth();
+        let currentYear = new Date().getFullYear();
+        let medicationData = { logs: [] };
+        
+        async function loadData() {
+            try {
+                const response = await fetch('nikki-meds.json');
+                medicationData = await response.json();
+            } catch (error) {
+                console.error('Error loading data:', error);
+            }
+            render();
+        }
+        
+        async function saveData() {
+            try {
+                // In real implementation, this would POST to a server
+                // For now, we'll simulate it
+                console.log('Saving data:', medicationData);
+                // You'd need a backend endpoint to actually save this
+                return true;
+            } catch (error) {
+                console.error('Error saving data:', error);
+                return false;
+            }
+        }
+        
+        function quickLog(period) {
+            const now = new Date();
+            const date = now.toISOString().split('T')[0];
+            const time = period === 'am' ? '09:30' : '21:30';
+            
+            addLog(date, time);
+        }
+        
+        function manualLog() {
+            const date = document.getElementById('manual-date').value;
+            const time = document.getElementById('manual-time').value;
+            
+            if (!date) {
+                showToast('Please select a date');
+                return;
+            }
+            
+            addLog(date, time);
+        }
+        
+        function addLog(date, time) {
+            // Check if already logged
+            const exists = medicationData.logs.some(log => 
+                log.date === date && log.time === time
+            );
+            
+            if (exists) {
+                showToast('Already logged');
+                return;
+            }
+            
+            medicationData.logs.push({
+                date,
+                time,
+                status: 'confirmed',
+                timestamp: new Date().toISOString()
+            });
+            
+            saveData();
+            render();
+            showToast('Dose logged ✓');
+        }
+        
+        function changeMonth(delta) {
+            currentMonth += delta;
+            if (currentMonth < 0) {
+                currentMonth = 11;
+                currentYear--;
+            } else if (currentMonth > 11) {
+                currentMonth = 0;
+                currentYear++;
+            }
+            render();
+        }
+        
+        function render() {
+            renderCalendar();
+            renderStats();
+        }
+        
+        function renderCalendar() {
+            const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+                'July', 'August', 'September', 'October', 'November', 'December'];
+            
+            document.getElementById('month-label').textContent = 
+                `${monthNames[currentMonth]} ${currentYear}`;
+            
+            const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+            const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+            const today = new Date();
+            
+            const calendar = document.getElementById('calendar');
+            calendar.innerHTML = '';
+            
+            // Day headers
+            const dayHeaders = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+            dayHeaders.forEach(header => {
+                const div = document.createElement('div');
+                div.className = 'day-header';
+                div.textContent = header;
+                calendar.appendChild(div);
+            });
+            
+            // Empty cells
+            for (let i = 0; i < firstDay; i++) {
+                const div = document.createElement('div');
+                div.className = 'day empty';
+                calendar.appendChild(div);
+            }
+            
+            // Days
+            for (let day = 1; day <= daysInMonth; day++) {
+                const div = document.createElement('div');
+                div.className = 'day';
+                
+                const isToday = day === today.getDate() && 
+                    currentMonth === today.getMonth() && 
+                    currentYear === today.getFullYear();
+                
+                if (isToday) div.classList.add('today');
+                
+                const dateStr = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                
+                div.innerHTML = `
+                    <div class="day-number">${day}</div>
+                    ${getDoseHTML(dateStr, '09:30', 'AM')}
+                    ${getDoseHTML(dateStr, '21:30', 'PM')}
+                `;
+                
+                calendar.appendChild(div);
+            }
+        }
+        
+        function getDoseHTML(date, time, label) {
+            const now = new Date();
+            const doseDateTime = new Date(`${date}T${time}:00`);
+            
+            const confirmed = medicationData.logs.some(log =>
+                log.date === date && log.time === time && log.status === 'confirmed'
+            );
+            
+            let status = 'pending';
+            if (confirmed) {
+                status = 'taken';
+            } else if (doseDateTime < now) {
+                status = 'missed';
+            }
+            
+            return `
+                <div class="dose-indicator">
+                    <div class="dot ${status}"></div>
+                    <span>${label}</span>
+                </div>
+            `;
+        }
+        
+        function renderStats() {
+            const now = new Date();
+            const monthStart = new Date(currentYear, currentMonth, 1);
+            const monthEnd = new Date(currentYear, currentMonth + 1, 0);
+            
+            let taken = 0;
+            let missed = 0;
+            let totalExpected = 0;
+            
+            // Count expected doses up to now
+            let date = new Date(monthStart);
+            while (date <= Math.min(now, monthEnd)) {
+                const dateStr = date.toISOString().split('T')[0];
+                
+                ['09:30', '21:30'].forEach(time => {
+                    const doseDateTime = new Date(`${dateStr}T${time}:00`);
+                    if (doseDateTime <= now) {
+                        totalExpected++;
+                        const confirmed = medicationData.logs.some(log =>
+                            log.date === dateStr && log.time === time && log.status === 'confirmed'
+                        );
+                        if (confirmed) taken++;
+                        else missed++;
+                    }
+                });
+                
+                date.setDate(date.getDate() + 1);
+            }
+            
+            const rate = totalExpected > 0 ? Math.round((taken / totalExpected) * 100) : 100;
+            
+            document.getElementById('stats').innerHTML = `
+                <div class="stat">
+                    <div class="stat-value good">${taken}</div>
+                    <div class="stat-label">Taken</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value bad">${missed}</div>
+                    <div class="stat-label">Missed</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value ${rate >= 95 ? 'good' : 'bad'}">${rate}%</div>
+                    <div class="stat-label">Rate</div>
+                </div>
+            `;
+        }
+        
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2000);
+        }
+        
+        // Initialize
+        document.getElementById('manual-date').valueAsDate = new Date();
+        loadData();
+        
+        // Refresh every minute
+        setInterval(loadData, 60000);
+    </script>
+</body>
+</html>

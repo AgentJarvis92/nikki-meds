@@ -1,0 +1,123 @@
+{
+  "medication": "Nadalol",
+  "schedule": [
+    {
+      "time": "09:30",
+      "label": "Morning"
+    },
+    {
+      "time": "21:30",
+      "label": "Evening"
+    }
+  ],
+  "logs": [
+    {
+      "date": "2026-02-01",
+      "time": "09:30",
+      "status": "confirmed",
+      "timestamp": "2026-02-01T09:30:00-05:00"
+    },
+    {
+      "date": "2026-02-01",
+      "time": "21:30",
+      "status": "confirmed",
+      "timestamp": "2026-02-01T21:30:00-05:00"
+    },
+    {
+      "date": "2026-02-02",
+      "time": "09:30",
+      "status": "confirmed",
+      "timestamp": "2026-02-02T09:30:00-05:00"
+    },
+    {
+      "date": "2026-02-02",
+      "time": "21:30",
+      "status": "confirmed",
+      "timestamp": "2026-02-02T21:30:00-05:00"
+    },
+    {
+      "date": "2026-02-03",
+      "time": "09:30",
+      "status": "confirmed",
+      "timestamp": "2026-02-03T09:30:00-05:00"
+    },
+    {
+      "date": "2026-02-03",
+      "time": "21:30",
+      "status": "confirmed",
+      "timestamp": "2026-02-03T21:30:00-05:00"
+    },
+    {
+      "date": "2026-02-04",
+      "time": "09:30",
+      "status": "confirmed",
+      "timestamp": "2026-02-04T09:30:00-05:00"
+    },
+    {
+      "date": "2026-02-04",
+      "time": "21:30",
+      "status": "confirmed",
+      "timestamp": "2026-02-04T21:30:00-05:00"
+    },
+    {
+      "date": "2026-02-05",
+      "time": "09:30",
+      "status": "confirmed",
+      "timestamp": "2026-02-05T09:30:00-05:00"
+    },
+    {
+      "date": "2026-02-05",
+      "time": "21:30",
+      "status": "confirmed",
+      "timestamp": "2026-02-05T21:30:00-05:00"
+    },
+    {
+      "date": "2026-02-06",
+      "time": "09:30",
+      "status": "confirmed",
+      "timestamp": "2026-02-06T09:30:00-05:00"
+    },
+    {
+      "date": "2026-02-06",
+      "time": "21:30",
+      "status": "confirmed",
+      "timestamp": "2026-02-06T21:30:00-05:00"
+    },
+    {
+      "date": "2026-02-07",
+      "time": "09:30",
+      "status": "confirmed",
+      "timestamp": "2026-02-07T09:30:00-05:00"
+    },
+    {
+      "date": "2026-02-07",
+      "time": "21:30",
+      "status": "confirmed",
+      "timestamp": "2026-02-07T21:30:00-05:00"
+    },
+    {
+      "date": "2026-02-08",
+      "time": "09:30",
+      "status": "confirmed",
+      "timestamp": "2026-02-08T09:30:00-05:00"
+    },
+    {
+      "date": "2026-02-08",
+      "time": "21:30",
+      "status": "confirmed",
+      "timestamp": "2026-02-08T21:30:00-05:00"
+    },
+    {
+      "date": "2026-02-09",
+      "time": "09:30",
+      "status": "confirmed",
+      "timestamp": "2026-02-09T09:30:00-05:00"
+    },
+    {
+      "date": "2026-02-09",
+      "time": "21:30",
+      "status": "confirmed",
+      "timestamp": "2026-02-09T21:33:00-05:00"
+    }
+  ]
+}

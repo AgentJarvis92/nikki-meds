@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Meddies - Drug Safety</title>
+    <link rel="icon" type="image/jpeg" href="med-icon.jpeg">
+    <link rel="apple-touch-icon" href="med-icon.jpeg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #b8e6f0 0%, #d4f1f9 100%);
+            min-height: 100vh;
+            color: #2d5016;
+        }
+        
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 2px solid #9dd17d;
+            padding: 16px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+        
+        .header h1 {
+            font-size: 22px;
+            font-weight: 600;
+            color: #2d5016;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .app-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+        }
+        
+        .header p {
+            font-size: 14px;
+            color: #6b8e5a;
+            margin-top: 2px;
+        }
+        
+        .container {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .nav {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+        
+        .nav a {
+            flex: 1;
+            padding: 12px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            border: 2px solid #9dd17d;
+            border-radius: 12px;
+            color: #2d5016;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s;
+            font-size: 13px;
+        }
+        
+        .nav a:active {
+            background: #e8f5e0;
+            transform: scale(0.98);
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 12px rgba(45, 80, 22, 0.1);
+            border: 2px solid rgba(157, 209, 125, 0.3);
+        }
+        
+        .card-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #2d5016;
+        }
+        
+        .search-box {
+            position: relative;
+            margin-bottom: 16px;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #9dd17d;
+            border-radius: 12px;
+            font-size: 16px;
+            background: white;
+            color: #2d5016;
+        }
+        
+        .search-box input:focus {
+            outline: none;
+            border-color: #7db85d;
+        }
+        
+        .search-icon {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9dd17d;
+            font-size: 18px;
+            pointer-events: none;
+        }
+        
+        .alert {
+            background: rgba(255, 153, 153, 0.2);
+            border: 2px solid #ff9999;
+            border-radius: 12px;
+            padding: 14px;
+            margin-bottom: 16px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .alert strong {
+            color: #cc0000;
+            display: block;
+            margin-bottom: 4px;
+        }
+        
+        .results-count {
+            font-size: 13px;
+            color: #6b8e5a;
+            margin-bottom: 12px;
+            padding: 0 4px;
+        }
+        
+        .drug-item {
+            background: white;
+            border-radius: 10px;
+            padding: 14px;
+            margin-bottom: 10px;
+            border-left: 4px solid;
+        }
+        
+        .drug-item.known {
+            border-color: #ff3b30;
+        }
+        
+        .drug-item.possible {
+            border-color: #ff9500;
+        }
+        
+        .drug-item.conditional {
+            border-color: #ffcc00;
+        }
+        
+        .drug-item.special {
+            border-color: #9dd17d;
+        }
+        
+        .drug-name {
+            font-weight: 600;
+            font-size: 16px;
+            color: #2d5016;
+            margin-bottom: 4px;
+        }
+        
+        .drug-brand {
+            font-size: 13px;
+            color: #6b8e5a;
+            margin-bottom: 8px;
+        }
+        
+        .drug-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid #f0f0f0;
+        }
+        
+        .drug-detail {
+            font-size: 12px;
+        }
+        
+        .drug-detail-label {
+            color: #6b8e5a;
+            font-weight: 500;
+        }
+        
+        .drug-detail-value {
+            color: #2d5016;
+        }
+        
+        .risk-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-top: 6px;
+        }
+        
+        .risk-badge.known {
+            background: rgba(255, 59, 48, 0.15);
+            color: #ff3b30;
+        }
+        
+        .risk-badge.possible {
+            background: rgba(255, 149, 0, 0.15);
+            color: #ff9500;
+        }
+        
+        .risk-badge.conditional {
+            background: rgba(255, 204, 0, 0.15);
+            color: #cc9900;
+        }
+        
+        .risk-badge.special {
+            background: rgba(157, 209, 125, 0.3);
+            color: #5a7d3d;
+        }
+        
+        .results-container {
+            max-height: 300px;
+            overflow-y: auto;
+            border: 2px solid rgba(157, 209, 125, 0.3);
+            border-radius: 12px;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.5);
+        }
+        
+        .results-container::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .results-container::-webkit-scrollbar-track {
+            background: rgba(157, 209, 125, 0.1);
+            border-radius: 4px;
+        }
+        
+        .results-container::-webkit-scrollbar-thumb {
+            background: #9dd17d;
+            border-radius: 4px;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: #6b8e5a;
+        }
+        
+        .empty-icon {
+            font-size: 48px;
+            margin-bottom: 12px;
+            opacity: 0.5;
+        }
+        
+        .legend {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 16px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: #2d5016;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+        
+        .legend-item:active {
+            background: rgba(157, 209, 125, 0.2);
+        }
+        
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+        }
+        
+        .info-icon {
+            margin-left: 4px;
+            color: #9dd17d;
+            font-size: 14px;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            padding: 20px;
+        }
+        
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .modal-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2d5016;
+            margin-bottom: 12px;
+        }
+        
+        .modal-text {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #2d5016;
+            margin-bottom: 16px;
+        }
+        
+        .modal-close {
+            width: 100%;
+            padding: 12px;
+            background: #9dd17d;
+            color: #2d5016;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 30px;
+            color: #6b8e5a;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>
+            <img src="med-icon.jpeg" alt="Med Icon" class="app-icon">
+            My Meddies
+        </h1>
+        <p>LQTS Type 2 - Drug Safety Checker</p>
+    </div>
+    
+    <div class="container">
+        <div class="nav">
+            <a href="nikki-meds-dashboard.html">📊 Tracker</a>
+            <a href="nikki-meds-safety.html">💊 Drugs</a>
+        </div>
+        
+        <div class="alert">
+            <strong>⚠️ Critical</strong>
+            Always check medications before taking them. Some drugs can cause dangerous heart rhythm problems with LQTS Type 2.
+        </div>
+        
+        <div class="card">
+            <div class="card-title">Risk Categories</div>
+            <div class="legend">
+                <div class="legend-item" onclick="showRiskInfo('known')">
+                    <div class="legend-color" style="background: #ff3b30;"></div>
+                    <span>Known Risk</span>
+                    <span class="info-icon">ℹ️</span>
+                </div>
+                <div class="legend-item" onclick="showRiskInfo('possible')">
+                    <div class="legend-color" style="background: #ff9500;"></div>
+                    <span>Possible Risk</span>
+                    <span class="info-icon">ℹ️</span>
+                </div>
+                <div class="legend-item" onclick="showRiskInfo('conditional')">
+                    <div class="legend-color" style="background: #ffcc00;"></div>
+                    <span>Conditional Risk</span>
+                    <span class="info-icon">ℹ️</span>
+                </div>
+                <div class="legend-item" onclick="showRiskInfo('special')">
+                    <div class="legend-color" style="background: #9dd17d;"></div>
+                    <span>Special Risk</span>
+                    <span class="info-icon">ℹ️</span>
+                </div>
+            </div>
+        </div>
+        
+        <div id="risk-modal" class="modal" onclick="closeModal()">
+            <div class="modal-content" onclick="event.stopPropagation()">
+                <div class="modal-title" id="modal-title"></div>
+                <div class="modal-text" id="modal-text"></div>
+                <button class="modal-close" onclick="closeModal()">Got it</button>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-title">Search Medications</div>
+            <div class="search-box">
+                <input 
+                    type="text" 
+                    id="drug-search" 
+                    placeholder="Type medication name..."
+                    autocomplete="off"
+                >
+                <span class="search-icon">🔍</span>
+            </div>
+            
+            <div id="results-count" class="results-count"></div>
+            <div class="results-container">
+                <div id="results"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let drugDatabase = null;
+        
+        async function loadDatabase() {
+            try {
+                const response = await fetch('lqts-drug-database.json');
+                drugDatabase = await response.json();
+                
+                // Sort drugs alphabetically by generic name
+                drugDatabase.drugs.sort((a, b) => 
+                    a.generic.localeCompare(b.generic)
+                );
+                
+                // Show all drugs by default
+                displayResults(drugDatabase.drugs, '');
+            } catch (error) {
+                console.error('Error loading database:', error);
+                document.getElementById('results').innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-icon">❌</div>
+                        <div>Error loading drug database</div>
+                    </div>
+                `;
+            }
+        }
+        
+        function searchDrugs(query) {
+            if (!query.trim()) {
+                // Show all drugs when search is empty
+                displayResults(drugDatabase.drugs, '');
+                return;
+            }
+            
+            const q = query.toLowerCase();
+            const results = drugDatabase.drugs.filter(drug => 
+                drug.generic.toLowerCase().includes(q) ||
+                drug.brand.toLowerCase().includes(q) ||
+                drug.class.toLowerCase().includes(q) ||
+                drug.use.toLowerCase().includes(q)
+            );
+            
+            displayResults(results, query);
+        }
+        
+        function displayResults(results, query) {
+            const resultsDiv = document.getElementById('results');
+            const countDiv = document.getElementById('results-count');
+            
+            if (results.length === 0) {
+                countDiv.textContent = 'No medications found';
+                resultsDiv.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-icon">🔍</div>
+                        <div style="font-weight: 600; margin-bottom: 8px;">No results for "${query}"</div>
+                        <div style="font-size: 13px;">Try a different name or spelling</div>
+                    </div>
+                `;
+                return;
+            }
+            
+            if (query.trim()) {
+                countDiv.textContent = `Found ${results.length} of ${drugDatabase.drugs.length} medications`;
+            } else {
+                countDiv.textContent = `Showing all ${results.length} medications (alphabetical)`;
+            }
+            
+            resultsDiv.innerHTML = results.map(drug => `
+                <div class="drug-item ${drug.category}">
+                    <div class="drug-name">${highlightMatch(drug.generic, query)}</div>
+                    <div class="drug-brand">${highlightMatch(drug.brand, query)}</div>
+                    <div class="risk-badge ${drug.category}">${drug.risk}</div>
+                    <div class="drug-details">
+                        <div class="drug-detail">
+                            <div class="drug-detail-label">Class</div>
+                            <div class="drug-detail-value">${drug.class}</div>
+                        </div>
+                        <div class="drug-detail">
+                            <div class="drug-detail-label">Use</div>
+                            <div class="drug-detail-value">${drug.use}</div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function highlightMatch(text, query) {
+            if (!query.trim()) return text;
+            const regex = new RegExp(`(${query})`, 'gi');
+            return text.replace(regex, '<strong>$1</strong>');
+        }
+        
+        function showRiskInfo(category) {
+            const modal = document.getElementById('risk-modal');
+            const title = document.getElementById('modal-title');
+            const text = document.getElementById('modal-text');
+            
+            const info = {
+                known: {
+                    title: 'Known Risk of TdP',
+                    text: 'These drugs have <strong>substantial evidence</strong> showing they can cause Torsades de Pointes (TdP) - a dangerous heart rhythm disorder.<br><br>They directly prolong your QT interval, which increases your risk of sudden cardiac events. Avoid these drugs unless absolutely necessary and under close medical supervision.'
+                },
+                possible: {
+                    title: 'Possible Risk of TdP',
+                    text: 'Evidence <strong>suggests these drugs may cause</strong> Torsades de Pointes, but it\'s not yet fully confirmed.<br><br>They may prolong the QT interval in some patients. Use with caution and discuss alternatives with your doctor.'
+                },
+                conditional: {
+                    title: 'Conditional Risk of TdP',
+                    text: 'These drugs <strong>can cause TdP under certain conditions</strong>, such as:<br><br>• High doses<br>• Combined with other medications<br>• In patients with low potassium/magnesium<br>• With kidney or liver problems<br><br>May be safer at lower doses or with careful monitoring.'
+                },
+                special: {
+                    title: 'Special Risk for LQTS',
+                    text: 'These drugs <strong>don\'t necessarily prolong QT</strong>, but have other effects that are dangerous for LQTS patients.<br><br>Most are <strong>adrenergic drugs</strong> that stimulate adrenaline receptors, which can trigger arrhythmias:<br><br>• Albuterol (asthma inhaler)<br>• EpiPen/Epinephrine<br>• Sudafed/Pseudoephedrine<br>• Adderall/Amphetamine<br>• Ibuprofen/Advil<br><br>Still dangerous for LQTS, just through a different mechanism.'
+                }
+            };
+            
+            const data = info[category];
+            title.textContent = data.title;
+            text.innerHTML = data.text;
+            modal.classList.add('show');
+        }
+        
+        function closeModal() {
+            document.getElementById('risk-modal').classList.remove('show');
+        }
+        
+        // Event listener
+        document.getElementById('drug-search').addEventListener('input', (e) => {
+            searchDrugs(e.target.value);
+        });
+        
+        // Initialize
+        document.getElementById('results').innerHTML = '<div class="loading">Loading database...</div>';
+        loadDatabase();
+    </script>
+</body>
+</html>

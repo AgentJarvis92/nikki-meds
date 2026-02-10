@@ -1,0 +1,445 @@
+{
+  "lastUpdated": "2026-02-09 (updated)",
+  "source": "CredibleMeds.org - Drugs to Avoid in Congenital Long QT",
+  "totalDrugs": "52 of 320",
+  "drugs": [
+    {
+      "generic": "Azithromycin",
+      "brand": "Zithromax, Zmax, Z-Pak",
+      "class": "Antibiotic",
+      "use": "Bacterial infection",
+      "risk": "Known Risk of TdP",
+      "category": "known"
+    },
+    {
+      "generic": "Amiodarone",
+      "brand": "Cordarone, Pacerone, Nexterone",
+      "class": "Antiarrhythmic",
+      "use": "Arrhythmia",
+      "risk": "Known Risk of TdP",
+      "category": "known"
+    },
+    {
+      "generic": "Albuterol",
+      "brand": "Proventil, Ventolin, ProAir HFA",
+      "class": "Bronchodilator",
+      "use": "Asthma",
+      "risk": "Special Risk",
+      "category": "special"
+    },
+    {
+      "generic": "Chlorpromazine",
+      "brand": "Thorazine, Largactil",
+      "class": "Antipsychotic",
+      "use": "Psychosis, nausea",
+      "risk": "Known Risk of TdP",
+      "category": "known"
+    },
+    {
+      "generic": "Ciprofloxacin",
+      "brand": "Cipro, Cetraxal, Ciloxan",
+      "class": "Antibiotic",
+      "use": "Bacterial infection",
+      "risk": "Known Risk of TdP",
+      "category": "known"
+    },
+    {
+      "generic": "Citalopram",
+      "brand": "Celexa",
+      "class": "Antidepressant (SSRI)",
+      "use": "Depression",
+      "risk": "Known Risk of TdP",
+      "category": "known"
+    },
+    {
+      "generic": "Clarithromycin",
+      "brand": "Biaxin",
+      "class": "Antibiotic",
+      "use": "Bacterial infection",
+      "risk": "Known Risk of TdP",
+      "category": "known"
+    },
+    {
+      "generic": "Diphenhydramine",
+      "brand": "Benadryl",
+      "class": "Antihistamine",
+      "use": "Allergies, sleep",
+      "risk": "Possible Risk of TdP",
+      "category": "possible"
+    },
+    {
+      "generic": "Domperidone",
+      "brand": "Motilium",
+      "class": "Antiemetic",
+      "use": "Nausea, vomiting",
+      "risk": "Known Risk of TdP",
+      "category": "known"
+    },
+    {
+      "generic": "Donepezil",
+      "brand": "Aricept",
+      "class": "Cholinesterase inhibitor",
+      "use": "Alzheimer's disease",
+      "risk": "Possible Risk of TdP",
+      "category": "possible"
+    },
+    {
+      "generic": "Droperidol",
+      "brand": "Inapsine",
+      "class": "Antipsychotic/Antiemetic",
+      "use": "Nausea, sedation",
+      "risk": "Known Risk of TdP",
+      "category": "known"
+    },
+    {
+      "generic": "Epinephrine",
+      "brand": "EpiPen, Adrenalin",
+      "class": "Sympathomimetic",
+      "use": "Anaphylaxis, cardiac arrest",
+      "risk": "Special Risk",
+      "category": "special"
+    },
+    {
+      "generic": "Erythromycin",
+      "brand": "E-Mycin, Ery-Tab, Erythrocin",
+      "class": "Antibiotic",
+      "use": "Bacterial infection",
+      "risk": "Known Risk of TdP",
+      "category": "known"
+    },
+    {
+      "generic": "Escitalopram",
+      "brand": "Lexapro",
+      "class": "Antidepressant (SSRI)",
+      "use": "Depression, anxiety",
+      "risk": "Possible Risk of TdP",
+      "category": "possible"
+    },
+    {
+      "generic": "Fluconazole",
+      "brand": "Diflucan",
+      "class": "Antifungal",
+      "use": "Fungal infection",
+      "risk": "Conditional Risk of TdP",
+      "category": "conditional"
+    },
+    {
+      "generic": "Fluoxetine",
+      "brand": "Prozac, Sarafem",
+      "class": "Antidepressant (SSRI)",
+      "use": "Depression",
+      "risk": "Conditional Risk of TdP",
+      "category": "conditional"
+    },
+    {
+      "generic": "Haloperidol",
+      "brand": "Haldol",
+      "class": "Antipsychotic",
+      "use": "Psychosis, agitation",
+      "risk": "Known Risk of TdP",
+      "category": "known"
+    },
+    {
+      "generic": "Hydroxychloroquine",
+      "brand": "Plaquenil",
+      "class": "Antimalarial/Immunosuppressant",
+      "use": "Malaria, lupus, rheumatoid arthritis",
+      "risk": "Known Risk of TdP",
+      "category": "known"
+    },
+    {
+      "generic": "Ibuprofen",
+      "brand": "Advil, Motrin",
+      "class": "NSAID",
+      "use": "Pain, fever, inflammation",
+      "risk": "Special Risk",
+      "category": "special"
+    },
+    {
+      "generic": "Levofloxacin",
+      "brand": "Levaquin",
+      "class": "Antibiotic",
+      "use": "Bacterial infection",
+      "risk": "Known Risk of TdP",
+      "category": "known"
+    },
+    {
+      "generic": "Methadone",
+      "brand": "Dolophine, Methadose",
+      "class": "Opioid",
+      "use": "Pain, opioid addiction",
+      "risk": "Known Risk of TdP",
+      "category": "known"
+    },
+    {
+      "generic": "Metoclopramide",
+      "brand": "Reglan",
+      "class": "Antiemetic",
+      "use": "Nausea, GERD",
+      "risk": "Possible Risk of TdP",
+      "category": "possible"
+    },
+    {
+      "generic": "Moxifloxacin",
+      "brand": "Avelox",
+      "class": "Antibiotic",
+      "use": "Bacterial infection",
+      "risk": "Known Risk of TdP",
+      "category": "known"
+    },
+    {
+      "generic": "Ondansetron",
+      "brand": "Zofran",
+      "class": "Antiemetic",
+      "use": "Nausea, vomiting",
+      "risk": "Known Risk of TdP",
+      "category": "known"
+    },
+    {
+      "generic": "Pseudoephedrine",
+      "brand": "Sudafed",
+      "class": "Decongestant",
+      "use": "Nasal congestion",
+      "risk": "Special Risk",
+      "category": "special"
+    },
+    {
+      "generic": "Quetiapine",
+      "brand": "Seroquel",
+      "class": "Antipsychotic",
+      "use": "Psychosis, bipolar disorder",
+      "risk": "Possible Risk of TdP",
+      "category": "possible"
+    },
+    {
+      "generic": "Risperidone",
+      "brand": "Risperdal",
+      "class": "Antipsychotic",
+      "use": "Psychosis, bipolar disorder",
+      "risk": "Possible Risk of TdP",
+      "category": "possible"
+    },
+    {
+      "generic": "Sertraline",
+      "brand": "Zoloft",
+      "class": "Antidepressant (SSRI)",
+      "use": "Depression, anxiety",
+      "risk": "Conditional Risk of TdP",
+      "category": "conditional"
+    },
+    {
+      "generic": "Sotalol",
+      "brand": "Betapace, Sorine",
+      "class": "Antiarrhythmic",
+      "use": "Arrhythmia",
+      "risk": "Known Risk of TdP",
+      "category": "known"
+    },
+    {
+      "generic": "Tramadol",
+      "brand": "Ultram, ConZip",
+      "class": "Opioid",
+      "use": "Pain",
+      "risk": "Conditional Risk of TdP",
+      "category": "conditional"
+    },
+    {
+      "generic": "Vandetanib",
+      "brand": "Caprelsa",
+      "class": "Anti-cancer",
+      "use": "Cancer (thyroid)",
+      "risk": "Known Risk of TdP",
+      "category": "known"
+    },
+    {
+      "generic": "Venlafaxine",
+      "brand": "Effexor",
+      "class": "Antidepressant (SNRI)",
+      "use": "Depression, anxiety",
+      "risk": "Possible Risk of TdP",
+      "category": "possible"
+    },
+    {
+      "generic": "Ziprasidone",
+      "brand": "Geodon",
+      "class": "Antipsychotic",
+      "use": "Psychosis, bipolar disorder",
+      "risk": "Known Risk of TdP",
+      "category": "known"
+    },
+    {
+      "generic": "Amitriptyline",
+      "brand": "Elavil, Tryptomer, Tryptizol",
+      "class": "Antidepressant, Tricyclic",
+      "use": "Depression",
+      "risk": "Conditional Risk of TdP",
+      "category": "conditional"
+    },
+    {
+      "generic": "Amphetamine",
+      "brand": "Adderal-XR, Dexedrine",
+      "class": "CNS stimulant",
+      "use": "ADHD",
+      "risk": "Special Risk",
+      "category": "special"
+    },
+    {
+      "generic": "Amphotericin B",
+      "brand": "Fungizone, Abelcet, AmBisome",
+      "class": "Antifungal",
+      "use": "Fungal infection",
+      "risk": "Conditional Risk of TdP",
+      "category": "conditional"
+    },
+    {
+      "generic": "Amsacrine",
+      "brand": "Amsidine",
+      "class": "Antineoplastic Agent",
+      "use": "Cancer (Acute Lymphoblastic Leukemia)",
+      "risk": "Conditional Risk of TdP",
+      "category": "conditional"
+    },
+    {
+      "generic": "Anagrelide",
+      "brand": "Agrylin, Xagrid",
+      "class": "Phosphodiesterase 3 inhibitor",
+      "use": "Thrombocythemia",
+      "risk": "Known Risk of TdP",
+      "category": "known"
+    },
+    {
+      "generic": "Apalutamide",
+      "brand": "Erleada",
+      "class": "Nonsteroidal antiandrogen",
+      "use": "Cancer (prostate)",
+      "risk": "Possible Risk of TdP",
+      "category": "possible"
+    },
+    {
+      "generic": "Apomorphine",
+      "brand": "Apokyn, Ixense",
+      "class": "Dopamine agonist",
+      "use": "Parkinson's disease",
+      "risk": "Possible Risk of TdP",
+      "category": "possible"
+    },
+    {
+      "generic": "Arformoterol",
+      "brand": "Brovana",
+      "class": "Bronchodilator",
+      "use": "Asthma, COPD",
+      "risk": "Special Risk",
+      "category": "special"
+    },
+    {
+      "generic": "Aripiprazole",
+      "brand": "Abilify, Aripiprex",
+      "class": "Antipsychotic, atypical",
+      "use": "Schizophrenia, depression",
+      "risk": "Possible Risk of TdP",
+      "category": "possible"
+    },
+    {
+      "generic": "Arsenic trioxide",
+      "brand": "Trisenox",
+      "class": "Anti-cancer",
+      "use": "Cancer (leukemia)",
+      "risk": "Known Risk of TdP",
+      "category": "known"
+    },
+    {
+      "generic": "Artemether/Lumefantrine",
+      "brand": "Coartem",
+      "class": "Anti-malarial",
+      "use": "Malaria",
+      "risk": "Possible Risk of TdP",
+      "category": "possible"
+    },
+    {
+      "generic": "Artenimol/piperaquine",
+      "brand": "Eurartesim",
+      "class": "Antimalarial",
+      "use": "Malaria",
+      "risk": "Possible Risk of TdP",
+      "category": "possible"
+    },
+    {
+      "generic": "Asenapine",
+      "brand": "Saphris, Sycrest",
+      "class": "Antipsychotic, atypical",
+      "use": "Schizophrenia",
+      "risk": "Possible Risk of TdP",
+      "category": "possible"
+    },
+    {
+      "generic": "Astemizole",
+      "brand": "Hismanal",
+      "class": "Antihistamine",
+      "use": "Allergic rhinitis",
+      "risk": "Known Risk of TdP",
+      "category": "known"
+    },
+    {
+      "generic": "Atazanavir",
+      "brand": "Reyataz, Evotaz",
+      "class": "Antiviral",
+      "use": "Viral infection (HIV/AIDS)",
+      "risk": "Conditional Risk of TdP",
+      "category": "conditional"
+    },
+    {
+      "generic": "Atomoxetine",
+      "brand": "Strattera",
+      "class": "CNS stimulant",
+      "use": "ADHD",
+      "risk": "Possible Risk of TdP",
+      "category": "possible"
+    },
+    {
+      "generic": "Bedaquiline",
+      "brand": "Sirturo",
+      "class": "Antibiotic",
+      "use": "Tuberculosis",
+      "risk": "Possible Risk of TdP",
+      "category": "possible"
+    },
+    {
+      "generic": "Bendamustine",
+      "brand": "Treanda, Treakisym",
+      "class": "Anti-cancer",
+      "use": "Cancer (Leukemia, lymphoma)",
+      "risk": "Possible Risk of TdP",
+      "category": "possible"
+    },
+    {
+      "generic": "Bendroflumethiazide",
+      "brand": "Aprinox, Corzide",
+      "class": "Diuretic, thiazide",
+      "use": "Hypertension, diuresis",
+      "risk": "Conditional Risk of TdP",
+      "category": "conditional"
+    }
+  ],
+  "riskCategories": {
+    "known": {
+      "name": "Known Risk of TdP",
+      "description": "Substantial evidence of TdP risk",
+      "color": "#ff3b30"
+    },
+    "possible": {
+      "name": "Possible Risk of TdP",
+      "description": "Evidence suggests risk but not yet confirmed",
+      "color": "#ff9500"
+    },
+    "conditional": {
+      "name": "Conditional Risk of TdP",
+      "description": "Can cause TdP under certain conditions",
+      "color": "#ffcc00"
+    },
+    "special": {
+      "name": "Special Risk for LQTS",
+      "description": "May not prolong QT but has other risks for LQTS patients",
+      "color": "#9dd17d"
+    }
+  }
+}
