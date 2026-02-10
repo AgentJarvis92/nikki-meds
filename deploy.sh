@@ -1,5 +1,5 @@
 #!/bin/bash
-# Auto-deploy Nikki's Medication App to Netlify
+# Auto-deploy Nikki's Medication App to GitHub Pages
 # Run this script whenever medication files are updated
 
 cd "$(dirname "$0")"
@@ -28,7 +28,7 @@ echo "⬆️  Pushing to GitHub..."
 git push origin main
 
 echo "✅ Pushed to GitHub!"
-echo "🌐 Netlify will auto-deploy in ~30 seconds"
+echo "🌐 GitHub Pages will auto-deploy in ~30 seconds"
 echo ""
-echo "📱 Check deployment at: https://app.netlify.com"
+echo "📱 Live site: https://agentjarvis92.github.io/nikki-meds/nikki-meds-dashboard.html"
 echo ""
