@@ -515,7 +515,8 @@
         
         function getDoseHTML(date, time, label) {
             const now = new Date();
-            const doseDateTime = new Date(`${date}T${time}:00`);
+            // Create dose datetime in local timezone with proper parsing
+            const doseDateTime = new Date(`${date}T${time}:00-05:00`); // EST timezone
             
             const confirmed = medicationData.logs.some(log =>
                 log.date === date && log.time === time && log.status === 'confirmed'
@@ -551,7 +552,7 @@
                 const dateStr = date.toISOString().split('T')[0];
                 
                 ['09:30', '21:30'].forEach(time => {
-                    const doseDateTime = new Date(`${dateStr}T${time}:00`);
+                    const doseDateTime = new Date(`${dateStr}T${time}:00-05:00`); // EST timezone
                     if (doseDateTime <= now) {
                         totalExpected++;
                         const confirmed = medicationData.logs.some(log =>
