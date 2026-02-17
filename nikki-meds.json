@@ -202,6 +202,12 @@
       "time": "21:30",
       "status": "confirmed",
       "timestamp": "2026-02-16T21:30:00-05:00"
+    },
+    {
+      "date": "2026-02-17",
+      "time": "09:30",
+      "status": "confirmed",
+      "timestamp": "2026-02-17T09:35:00-05:00"
     }
   ]
 }
