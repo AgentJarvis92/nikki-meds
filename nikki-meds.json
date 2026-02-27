@@ -322,6 +322,12 @@
       "time": "21:30",
       "status": "confirmed",
       "timestamp": "2026-02-26T21:32:00-05:00"
+    },
+    {
+      "date": "2026-02-27",
+      "time": "09:30",
+      "status": "confirmed",
+      "timestamp": "2026-02-27T09:30:00-05:00"
     }
   ]
 }
